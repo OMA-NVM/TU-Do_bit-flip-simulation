@@ -27,6 +27,12 @@ docker run -i -d \
 
 ## Using the Benchmarks
 
+On the first usage of this Repository, please initialize all submodules, as most tools reside in their own repositories.
+
+```
+git submodules init
+```
+
 The NVMBench.sh script provides you with everything needed tools to setup the simulator and unikraft. A help screen is available by simply running the script without any arguments.
 
 At first initialise all submodules ind build the Gem5 + NVMain simulator with:

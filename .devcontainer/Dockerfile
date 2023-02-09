@@ -8,7 +8,7 @@ SHELL ["/bin/bash", "-c"]
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-        && apt-get -y install --no-install-recommends build-essential \
+        && apt-get -y install --fix-missing --no-install-recommends build-essential \
         m4 zlib1g zlib1g-dev libprotobuf-dev protobuf-compiler \
         python-pip python2-dev libz-dev clangd \
         gcc make gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu \

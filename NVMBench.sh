@@ -4,7 +4,8 @@ export ROOT_DIR=$(pwd)
 
 #build Gem5 with nvmain
 buildgem5() {
-    git submodules init
+    git submodule init
+    git submodule update
     cd $ROOT_DIR/simulator/gem5
     scons -j 8 EXTRAS=../nvmain ./build/ARM/gem5.fast
     cd $ROOT_DIR

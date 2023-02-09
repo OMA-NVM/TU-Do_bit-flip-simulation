@@ -43,6 +43,7 @@ simulate() {
     #Start simulation
     export M5_PATH=.
     nohup $ROOT_DIR/simulator/gem5/build/ARM/gem5.fast $ROOT_DIR/simulator/gem5/configs/example/fs.py \
+    --mem-type=NVMainMemory \
     --bare-metal --disk-image $ROOT_DIR/simulator/fake.iso \
     --kernel=$ROOT_DIR/results/$1.d/$1_gem5-arm64.dbg \
     --nvmain-config=$ROOT_DIR/simulator/nvmain/Config/printtrace.config \

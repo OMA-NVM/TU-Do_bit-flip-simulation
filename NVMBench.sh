@@ -38,7 +38,7 @@ simulate() {
     #Move app binary to directory
     cp $ROOT_DIR/unikraft_setup/apps/$1/build/$1_gem5-arm64.dbg $1_gem5-arm64.dbg
     #Move trace config to directory
-    #cp ../../BenchGem5NVMain/nvmain/Config/printtrace.config printtrace.config
+    cp ../../simulator/nvmain/Config/printtrace.config printtrace.config
 
     #Start simulation
     export M5_PATH=.
@@ -46,12 +46,16 @@ simulate() {
     --mem-type=NVMainMemory \
     --bare-metal --disk-image $ROOT_DIR/simulator/fake.iso \
     --kernel=$ROOT_DIR/results/$1.d/$1_gem5-arm64.dbg \
-    --nvmain-config=$ROOT_DIR/simulator/nvmain/Config/printtrace.config \
+    --nvmain-config=$ROOT_DIR/results/$1.d/printtrace.config \
     --cpu-type=DerivO3CPU --machine-type=VExpress_GEM5_V2 --caches --l2cache \
     --l1i_size='32kB' --l1d_size='8kB' --l2_size='8kB' --dtb-filename=none \
     --mem-size=4GB > gem5.terminal &
     disown $(jobs -p)
     cd $ROOT_DIR
+}
+
+ana() {
+    python3 simulator/TraceAnalysis.py --f=results/$1.d
 }
 
 case $1 in
@@ -66,6 +70,9 @@ case $1 in
     ;;
     simulate | s)
         simulate $2
+    ;;
+    analyze | a)
+        ana $2
     ;;
     bs)
         build $2

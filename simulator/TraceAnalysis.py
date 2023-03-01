@@ -1,5 +1,5 @@
 from asyncio.subprocess import PIPE
-from turtle import color, left, position, right
+#from turtle import color, left, position, right
 import numpy as np
 import matplotlib.pyplot as plt
 import subprocess
@@ -237,7 +237,7 @@ def calculateAEW(startIndex, endIndex, windowSize):
     count = 0
     maxWindowValue = sys.maxsize
     for i in range(startIndex, endIndex):
-        if i+windowSize < endIndex:           
+        if i+windowSize < endIndex:
             aeWindow = (np.sum(flips[i:i+windowSize])/np.shape(flips)[0]) / np.max(flips[i:i+windowSize])
             if aeWindow < maxWindowValue:
                 maxWindowValue = aeWindow
@@ -280,7 +280,7 @@ def memory_region():
         case "heap":
              return heapStartIndex[0][0], heapEndIndex[0][0]
         case "stack":
-             return stackStartIndex[0][0], end    
+             return stackStartIndex[0][0], end
         case "all":
             return textStartIndex[0][0], end
 
@@ -489,5 +489,5 @@ elif args.w == "8":
     # fig5, (ax5, ax1) = plt.subplots(1,2)
     # fig5.set_size_inches(11.5,4.5)
 
-if args.p:
-    plt.show()
+#if args.p:
+plt.savefig(args.f + '/plot.png')

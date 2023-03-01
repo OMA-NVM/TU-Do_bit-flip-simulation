@@ -7,15 +7,20 @@ FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
 SHELL ["/bin/bash", "-c"]
 
 # [Optional] Uncomment this section to install additional OS packages.
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+RUN apt-get update  --fix-missing && export DEBIAN_FRONTEND=noninteractive \
         && apt-get -y install --fix-missing --no-install-recommends build-essential \
         m4 zlib1g zlib1g-dev libprotobuf-dev protobuf-compiler \
-        python-pip python2-dev libz-dev clangd \
+        python2-dev libz-dev clangd \
         gcc make gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu \
-        libncurses-dev bison flex libboost-all-dev
+        libncurses-dev bison flex libboost-all-dev scons python3-pip \
+        libgoogle-perftools-dev
+
+        #python3-pip
+
+RUN pip install numpy asyncio matplotlib argparse
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python2 1
-RUN pip2 install scons
+RUN cd / ; curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py ; sudo python2 get-pip.py ; pip2 install scons
 #RUN cd gem5 ; scons -j 12 EXTRAS=../nvmain ./build/ARM/gem5.fast
 
 #Unikraft deps

@@ -399,9 +399,11 @@ ax1.yaxis.set_tick_params(which='both', labelbottom=True)
 
 #======AEW64Plot======
 
-if args.w == "64" or "all":
+if args.w == "64" or args.w == "all":
 
     fig2, ax2 = plt.subplots()
+    x = bits[leftindex64:rightindex64].ravel()
+    y = flips[leftindex64:rightindex64].ravel()
     ax2.set_title("")
     ax2.set_ylabel("Flips")
     ax2.set_xlabel("Address")
@@ -409,9 +411,11 @@ if args.w == "64" or "all":
     ax2.spines["top"].set_visible(False)
     ax2.grid(True, which="both", linestyle='--', axis="y")
     ax2.semilogy(accesses[start:endindex], '-r', label='Accesses')
-    ax2.semilogy(bits[startindex:leftindex64], flips[startindex:leftindex64], 'c.', label='Flips')
-    ax2.semilogy(bits[leftindex64:rightindex64], flips[leftindex64:rightindex64], 'go', label='FlipsAEW')
-    ax2.semilogy(bits[rightindex64:endindex], flips[rightindex64:endindex], 'c.')
+    ax2.semilogy(bits[startindex:(leftindex64-1)], flips[startindex:(leftindex64-1)], 'c.', label='Flips')
+    ax2.semilogy(x, y, 'g*', label='AEW-Flips')
+    ax2.fill(x, y, color='blue', label='AEW-Area')
+    ax2.fill_between(x, y, 1, color='blue')
+    ax2.semilogy(bits[(rightindex64+1):endindex], flips[(rightindex64+1):endindex], 'c.')
     ax2.legend(loc='upper right')
     ax2.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
 
@@ -422,19 +426,22 @@ if args.w == "64" or "all":
 elif args.w == "32":
 
     fig2, ax2 = plt.subplots()
+    x = bits[leftindex32:rightindex32].ravel()
+    y = flips[leftindex32:rightindex32].ravel()
     ax2.set_title("")
     ax2.set_xlabel("Flips")
     ax2.set_ylabel("Address")
     ax2.spines["right"].set_visible(False)
     ax2.spines["top"].set_visible(False)
     ax2.grid(True, which="both", linestyle='--', axis="y")
-    ax2.semilogy(accesses[start:endindex], '-r')
-    ax2.semilogy(bits[startindex:leftindex32], flips[startindex:leftindex32], 'c.', label='Flips')
-    ax2.semilogy(bits[leftindex32:rightindex32], flips[leftindex32:rightindex32], 'go', label='FlipsAEW')
-    ax2.semilogy(bits[rightindex32:endindex], flips[rightindex32:endindex], 'c.')
+    ax2.semilogy(accesses[start:endindex], '-r', label='Accesses')
+    ax2.semilogy(bits[startindex:(leftindex32-1)], flips[startindex:(leftindex32-1)], 'c.', label='Flips')
+    ax2.semilogy(x, y, 'g*', label='AEW-Flips')
+    ax2.fill(x, y, color='blue', label='AEW-Area')
+    ax2.fill_between(x, y, 1, color='blue')
+    ax2.semilogy(bits[(rightindex32+1):endindex], flips[(rightindex32+1):endindex], 'c.')
     ax2.legend()
     ax2.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
-
 
 
 #======AEW16Plot======
@@ -442,16 +449,20 @@ elif args.w == "32":
 elif args.w == "16":
 
     fig3, ax3 = plt.subplots()
+    x = bits[leftindex16:rightindex16].ravel()
+    y = flips[leftindex16:rightindex16].ravel()
     ax3.set_title("")
     ax3.set_xlabel("Flips")
     ax3.set_ylabel("Address")
     ax3.spines["right"].set_visible(False)
     ax3.spines["top"].set_visible(False)
     ax3.grid(True, which="both", linestyle='--', axis="y")
-    ax3.semilogy(accesses[start:endindex], '-r')
-    ax3.semilogy(bits[startindex:leftindex16], flips[startindex:leftindex16], 'c.', label='Flips')
-    ax3.semilogy(bits[leftindex16:rightindex16], flips[leftindex16:rightindex16], 'go', label='FlipsAEW')
-    ax3.semilogy(bits[rightindex16:endindex], flips[rightindex16:endindex], 'c.')
+    ax3.semilogy(accesses[start:endindex], '-r', label='Accesses')
+    ax3.semilogy(bits[startindex:(leftindex16-1)], flips[startindex:(leftindex16-1)], 'c.', label='Flips')
+    ax3.semilogy(x, y, 'g*', label='AEW-Flips')
+    ax3.fill(x, y, color='blue', label='AEW-Area')
+    ax3.fill_between(x, y, 1, color='blue')
+    ax3.semilogy(bits[(rightindex16+1):endindex], flips[(rightindex16+1):endindex], 'c.')
     ax3.legend()
     ax3.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
 
@@ -461,16 +472,20 @@ elif args.w == "16":
 elif args.w == "8":
 
     fi4, ax4 = plt.subplots()
+    x = bits[leftindex8:rightindex8].ravel()
+    y = flips[leftindex8:rightindex8].ravel()
     ax4.set_title("")
     ax4.set_xlabel("Flips")
     ax4.set_ylabel("Address")
     ax4.spines["right"].set_visible(False)
     ax4.spines["top"].set_visible(False)
     ax4.grid(True, which="both", linestyle='--', axis="y")
-    ax4.semilogy(accesses[start:endindex], '-r')
-    ax4.semilogy(bits[startindex:leftindex8], flips[startindex:leftindex8], 'c.', label='Flips')
-    ax4.semilogy(bits[leftindex8:rightindex8], flips[leftindex8:rightindex8], 'go', label='FlipsAEW')
-    ax4.semilogy(bits[rightindex8:endindex], flips[rightindex8:endindex], 'c.')
+    ax4.semilogy(accesses[start:endindex], '-r', label='Accesses')
+    ax4.semilogy(bits[startindex:(leftindex8-1)], flips[startindex:(leftindex8-1)], 'c.', label='Flips')
+    ax4.semilogy(x, y, 'g*', label='AEW-Flips')
+    ax4.fill(x, y, color='blue', label='AEW-Area')
+    ax4.fill_between(x, y, 1, color='blue')
+    ax4.semilogy(bits[(rightindex8+1):endindex], flips[(rightindex8+1):endindex], 'c.')
     ax4.legend()
     ax4.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
 

@@ -7,7 +7,8 @@ FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
 SHELL ["/bin/bash", "-c"]
 
 # [Optional] Uncomment this section to install additional OS packages.
-RUN apt-get update  --fix-missing && export DEBIAN_FRONTEND=noninteractive \
+RUN apt-get update --fix-missing
+RUN apt-get update --fix-missing && export DEBIAN_FRONTEND=noninteractive \
         && apt-get -y install --fix-missing --no-install-recommends build-essential \
         m4 zlib1g zlib1g-dev libprotobuf-dev protobuf-compiler \
         python2-dev libz-dev clangd \

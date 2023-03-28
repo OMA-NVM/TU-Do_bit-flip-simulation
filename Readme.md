@@ -1,37 +1,16 @@
-# bit-flip-simulation
-This Repository should enable the user to use our Gem5+NVMain setup, Unikraft and Benchmark apps to measure/evaluate NVM memory on bit flip level.
+# Bit-Flip-Simulation
+This Repository should enable the user to use our Gem5+NVMain setup, Unikraft and Benchmark apps to measure/evaluate NVM memory on single bit flip granularity.
 ## Setup with VS Code and Docker development container
 
 1.) Get [VS CODE](https://code.visualstudio.com/) and necessary [extensions](https://code.visualstudio.com/docs/remote/remote-overview) for remote container development.
 
 ![alt text](img/extension.gif)
 
-2.) This repository supports VS code development containers. Just press F1 inside VS code and execute "Remote-Containers: Open Worksapce in Container..". Now continue with [building](#build-the-project)  the Project. Should you prefere to build the container yourself continue with the next steps.
+2.) This repository supports VS code development containers. Just press F1 inside VS code and execute "Remote-Containers: Open Worksapce in Container.." or click the "Open in Container" btutton on the pop up Window. After that, continue with [initializing](#using-the-benchmarks) the Project.
 
 ![alt text](img/open.gif)
 
-```
-docker build -t llvmtadocker:latest - < .devcontainer/Dockerfile
-```
-3.) Run the Docker dev container with Repository as Volume. The third line defines an extra Volume for the build folder and is optional.
-```
-docker run -i -d \
-	-v {$path_to_this_repository}:/workspaces/llvmta:rw \
-	-v {$path_to_build_bir}:/workspaces/llvmta/build:rw \
-	--name $name_of_instance llvmtadocker:latest
-```
-4.) Now VS Code can be attached to the container.
-
-
-
-
 ## Using the Benchmarks
-
-On the first usage of this Repository, please initialize all submodules, as most tools reside in their own repositories.
-
-```
-git submodules init
-```
 
 The NVMBench.sh script provides you with everything needed tools to setup the simulator and unikraft. A help screen is available by simply running the script without any arguments.
 
@@ -56,5 +35,10 @@ Start a Simulation with:
 ```
 ./NVMBench s APPNAME
 ```
- Simulation results will be dumped in the results/APPNAME.d folder.
+Simulation results will be dumped in the results/APPNAME.d folder.
 The simulation starts detached from the terminal. The gem5 output is located in results/APPNAME.d/gem5.terminal. The unikraft terminal output is located at results/APPNAME.d/m5out/system.terminal
+
+After The simulation finished executing a trace file is generated and the analysis can be executed. The results will be displayed in the terminal and a plot is generated in the results folder.
+```
+./NVMBench a APPNAME
+```

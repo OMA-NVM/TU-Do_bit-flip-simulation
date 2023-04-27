@@ -13,19 +13,23 @@
 	"runArgs": [
 		"--network=host"
 	],
-	"extensions": [
-		"llvm-vs-code-extensions.vscode-clangd",
-		"matepek.vscode-catch2-test-adapter",
-		"twxs.cmake",
-		"vadimcn.vscode-lldb",
-		"dan-c-underwood.arm",
-		"jeff-hykin.better-cpp-syntax",
-		"xaver.clang-format",
-		"mhutchie.git-graph",
-		"eamodio.gitlens",
-		"rreverser.llvm",
-		"gruntfuggly.todo-tree"
-	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"llvm-vs-code-extensions.vscode-clangd",
+				"matepek.vscode-catch2-test-adapter",
+				"twxs.cmake",
+				"vadimcn.vscode-lldb",
+				"dan-c-underwood.arm",
+				"jeff-hykin.better-cpp-syntax",
+				"xaver.clang-format",
+				"mhutchie.git-graph",
+				"eamodio.gitlens",
+				"rreverser.llvm",
+				"gruntfuggly.todo-tree"
+			]
+		}
+	},
 	//"appPort": [ 10245, 8765, 8766 ],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	//"forwardPorts": ["host:10245", "host:8765", "host:8766" ],

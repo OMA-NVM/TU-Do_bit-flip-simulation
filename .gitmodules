@@ -1,12 +1,12 @@
 [submodule "unikraft_setup/unikraft"]
 	path = unikraft_setup/unikraft
-	url = git@github.com:OMA-NVM/unikraft.git
+	url = git@github.com:OMA-NVM/TU-Do_unikraft.git
 [submodule "unikraft_setup/apps"]
 	path = unikraft_setup/apps
-	url = https://github.com/OMA-NVM/apps
+	url = git@github.com:OMA-NVM/TU-Do_Benchmark-Apps.git
 [submodule "simulator/gem5"]
 	path = simulator/gem5
-	url = git@github.com:OMA-NVM/gem5.git
+	url = git@github.com:OMA-NVM/TU-Do_gem5.git
 [submodule "simulator/nvmain"]
 	path = simulator/nvmain
-	url = git@github.com:OMA-NVM/nvmain.git
+	url = git@github.com:OMA-NVM/TU-Do_nvmain.git

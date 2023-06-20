@@ -1,6 +1,6 @@
 [submodule "unikraft_setup/unikraft"]
 	path = unikraft_setup/unikraft
-	url = git@github.com:OMA-NVM/TU-Do_unikraft.git
+	url = git@github.com:OMA-NVM/FAU_nvm_unikraft.git
 [submodule "unikraft_setup/apps"]
 	path = unikraft_setup/apps
 	url = git@github.com:OMA-NVM/TU-Do_Benchmark-Apps.git

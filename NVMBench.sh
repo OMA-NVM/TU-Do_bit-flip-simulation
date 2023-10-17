@@ -7,7 +7,7 @@ buildgem5() {
     git submodule init
     git submodule update
     cd $ROOT_DIR/simulator/gem5
-    scons -j 8 EXTRAS=../nvmain ./build/ARM/gem5.fast
+    python3 `which scons` -j 8 EXTRAS=../nvmain ./build/ARM/gem5.fast
     cd $ROOT_DIR
 }
 
@@ -42,7 +42,7 @@ simulate() {
 
     #Start simulation
     export M5_PATH=.
-    nohup $ROOT_DIR/simulator/gem5/build/ARM/gem5.fast $ROOT_DIR/simulator/gem5/configs/example/fs.py \
+    nohup $ROOT_DIR/simulator/gem5/build/ARM/gem5.fast $ROOT_DIR/simulator/gem5/configs/deprecated/example/fs.py \
     --mem-type=NVMainMemory \
     --bare-metal --disk-image $ROOT_DIR/simulator/fake.iso \
     --kernel=$ROOT_DIR/results/$1.d/$1_gem5-arm64.dbg \

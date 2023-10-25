@@ -6,7 +6,7 @@
 	url = git@github.com:OMA-NVM/TU-Do_Benchmark-Apps.git
 [submodule "simulator/gem5"]
 	path = simulator/gem5
-	url = https://github.com/OMA-NVM/nv-gem5.git
+	url = git@github.com:OMA-NVM/nv-gem5.git
 [submodule "simulator/nvmain"]
 	path = simulator/nvmain
-	url = https://github.com/OMA-NVM/nv-NVmain.git
+	url = git@github.com:OMA-NVM/nv-NVmain.git
